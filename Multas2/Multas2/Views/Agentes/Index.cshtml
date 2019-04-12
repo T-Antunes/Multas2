@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<Multas2.Models.Agentes>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Agentes";
 }
 
-<h2>Index</h2>
+<h2>Listagem de Agentes</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Adicionar Agente", "Create")
 </p>
 <table class="table">
     <tr>
@@ -26,6 +26,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @* Mostra o nome do Atributo *@
             @Html.DisplayFor(modelItem => item.Nome)
         </td>
         <td>
@@ -35,9 +36,9 @@
             @Html.DisplayFor(modelItem => item.Fotografia)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Apagar", "Delete", new { id=item.ID })
         </td>
     </tr>
 }
