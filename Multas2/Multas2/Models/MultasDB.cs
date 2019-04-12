@@ -10,10 +10,13 @@ namespace Multas2.Models
     {
         public MultasDB () : base("MultasDBConnectionString") { }
         // Definir as tabelas
-        public DbSet<Condutores> Condutores { get; set; }
-        public DbSet<Viaturas> Carros { get; set; }
-        public DbSet<Agentes> Agentes { get; set; }
-        public DbSet<Multas> Multas { get; set; }
+
+        // vamos colocar, aqui, as instruções relativas às tabelas do 'negócio'
+        // descrever os nomes das tabelas na Base de Dados
+        public DbSet<Condutores> Condutores { get; set; } //Tabela Condutores
+        public DbSet<Viaturas> Carros { get; set; } //Tabela Viaturas
+        public DbSet<Agentes> Agentes { get; set; } //Tabela Agentes
+        public DbSet<Multas> Multas { get; set; } // Tabela Multas
 
 
     }
