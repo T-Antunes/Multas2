@@ -18,7 +18,7 @@
             @Html.DisplayNameFor(model => model.Esquadra)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Fotografia)
+           @Html.DisplayNameFor(model => model.Fotografia)
         </th>
         <th></th>
     </tr>
@@ -33,7 +33,16 @@
             @Html.DisplayFor(modelItem => item.Esquadra)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Fotografia)
+            @* Apresentar a imagem de um agente *@
+
+            <img src="~/Imagens/@item.Fotografia"
+                 alt="Imagem do agente @item.Nome"
+                 title="@item.Nome"
+                 width="50" />
+
+
+
+             @*  @Html.DisplayFor(modelItem => item.Fotografia)*@  
         </td>
         <td>
             @Html.ActionLink("Editar", "Edit", new { id=item.ID }) |

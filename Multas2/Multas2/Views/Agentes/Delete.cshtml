@@ -1,15 +1,18 @@
 ﻿@model Multas2.Models.Agentes
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Remover Agente";
 }
 
-<h2>Apagar</h2>
+<h2>Remover um agente da Base de Dados</h2>
 
 <h3>Tem a certeza que pretende apagar estes dados?</h3>
 <div>
     <h4>Agentes</h4>
     <hr />
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Nome)
@@ -32,12 +35,15 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Fotografia)
+            @*<img src="~/Imagens/@Html.DisplayFor(model => model.Fotografia)" alt="" title="" />*@
+            <img src="~/Imagens/@Model.Fotografia" alt="" title="" width="150" />
+            <br />
         </dd>
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
