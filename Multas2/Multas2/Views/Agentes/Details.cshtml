@@ -1,13 +1,12 @@
 ﻿@model Multas2.Models.Agentes
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalhes";
 }
 
-<h2>Detalhes</h2>
+<h2>Detalhes do Agente <i>@Model.Nome</i></h2>
 
 <div>
-    <h4>Agentes</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -31,10 +30,46 @@
         </dt>
 
         <dd>
-            <img src="~/Imagens/@Model.Fotografia" alt="" title="" width="150" />
+            <img src="~/Imagens/@Model.Fotografia" alt="Fotografia do Agente @Html.DisplayFor(model => model.Nome)"
+                 title="@Html.DisplayFor(model => model.Nome)" width="150" />
+            <img src="~/Imagens/@Html.DisplayFor(model => model.Fotografia)" alt="" title="" width="150" />
         </dd>
-
     </dl>
+</div>
+
+@* Listagem das Multas do agente *@
+<div>
+    <table class="table">
+        <tr>
+            @* listar o nome dos atributos *@
+            <th> @Html.DisplayNameFor(m => m.ListaDeMultas.FirstOrDefault().DataDaMulta) </th>
+            <th> @Html.DisplayNameFor(m => m.ListaDeMultas.FirstOrDefault().LocalDaMulta) </th>
+            <th> @Html.DisplayNameFor(m => m.ListaDeMultas.FirstOrDefault().ValorMulta) </th>
+            <th> @Html.DisplayNameFor(m => m.ListaDeMultas.FirstOrDefault().Condutor.Nome) </th>
+            <th> @Html.DisplayNameFor(m => m.ListaDeMultas.FirstOrDefault().Viatura.Matricula) </th>
+        </tr>
+
+        @foreach (var multa in Model.ListaDeMultas) {
+        <tr>
+            @* representar as diversas multas do agente *@
+            <td>
+                @Html.ActionLink(multa.DataDaMulta.ToShortDateString(), "Details", "Multas", new { id = multa.ID }, null)
+            </td>
+            <td> @multa.LocalDaMulta</td>
+            <td> @multa.ValorMulta</td>
+            <td>
+                @Html.ActionLink(multa.Condutor.Nome, "Details", "Condutores", new { id = multa.Condutor.ID }, null)
+            </td>
+            <td>
+                @Html.ActionLink(multa.Viatura.Matricula, "Details", "Viaturas", new { id = multa.Viatura.ID }, null)
+            </td>
+            
+        </tr>
+
+                }
+
+        </table>
+
 </div>
 <p>
     @Html.ActionLink("Editar", "Edit", new { id = Model.ID }) |
