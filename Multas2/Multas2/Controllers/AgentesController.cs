@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace Multas2.Controllers
 {
+    [Authorize] // só pessoas autenticadas podem acedes ao seu conteúdo
     public class AgentesController : Controller
     {
         private MultasDB db = new MultasDB();

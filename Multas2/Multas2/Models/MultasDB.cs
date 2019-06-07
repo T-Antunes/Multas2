@@ -9,6 +9,7 @@ namespace Multas2.Models
 {
     public class MultasDB : DbContext
     {
+        // construtor: Definir a localização da Base de Dados
         public MultasDB() : base("MultasDBConnectionString") { }
         // Definir as tabelas
 
